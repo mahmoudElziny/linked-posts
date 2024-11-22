@@ -1,9 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "./authSlice";
+import authReducer from "./authSlice";
+import postsReducer from "./postsSlice";
 
 export let dataStore = configureStore({
-  reducer: authSlice
+  reducer: {
+    authReducer,
+    postsReducer
+  }
 });
 
 
 export type storeDispatch = typeof dataStore.dispatch;
+export type rootStore = ReturnType <typeof dataStore.getState>
